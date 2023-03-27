@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,10 +30,10 @@ namespace WpfAppPractwork1
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             WindowPassword passwordWindow = new WindowPassword();
-
+            StreamReader sr = new StreamReader(@"Passwort.psw");
             if (passwordWindow.ShowDialog() == true)
             {
-                if (passwordWindow.Password == "1234")
+                if (passwordWindow.Password == sr.ReadLine())
                 {
                     MessageBox.Show("Авторизация пройдена");
                     ClassFrame.frmObj = FrmMain;
